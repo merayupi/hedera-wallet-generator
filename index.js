@@ -1,6 +1,6 @@
 import { PrivateKey } from "@hashgraph/sdk";
 import fetch from 'node-fetch';
-import { createWriteStream, existsSync } from 'fs';
+import { createWriteStream, existsSync } from 'node:fs';
 import rl from 'readline-sync';
 
 let filename = 'generated.csv';
