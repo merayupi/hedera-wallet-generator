@@ -1,4 +1,4 @@
-# hedera-wallet-generator
+# Hedera Wallet Generator
 
 Generate as many hedera wallets as you want
 
