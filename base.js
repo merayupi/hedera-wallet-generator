@@ -1,5 +1,5 @@
-const { PrivateKey } = require("@hashgraph/sdk");
-const fetch = require('node-fetch')
+import { PrivateKey } from "@hashgraph/sdk";
+import fetch from 'node-fetch';
 
 async function createWallet(pubKey){
     const res = await fetch('https://api-lb.hashpack.app/create-wallet',{
