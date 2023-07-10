@@ -46,17 +46,22 @@ const main = async () => {
 
     writeStream.write('Account ID,Private Key\n');
     for(let i = 0; i < numberToGenerate; i++) {
-        const newAccountPrivateKey = PrivateKey.generateED25519();
-        const newAccountPublicKey = newAccountPrivateKey.publicKey;
+        try {
+            const newAccountPrivateKey = PrivateKey.generateED25519();
+            const newAccountPublicKey = newAccountPrivateKey.publicKey;
 
-        const wallet = await createWallet(newAccountPublicKey.toStringDer())
-        const sukses = wallet.receipt.status._code = 22
-        const accountid = wallet.accountID
+            const wallet = await createWallet(newAccountPublicKey.toStringDer())
+            const sukses = wallet.receipt.status._code = 22
+            const accountid = wallet.accountID
 
-        if(!sukses) return;
-        console.log(newAccountPrivateKey.toStringDer())
-        writeStream.write(`${accountid},${newAccountPrivateKey}${i + 1 == numberToGenerate ? '' : '\n'}`)
-    }  
+            if(!sukses) return;
+            writeStream.write(`${accountid},${newAccountPrivateKey}${i + 1 == numberToGenerate ? '' : '\n'}`)
+        } catch (error) {
+            
+        }
+    }
+    writeStream.end();
+    console.log(`Wallets generated and saved in ${filename}!`);  
 }
 
 main()
